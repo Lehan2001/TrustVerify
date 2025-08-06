@@ -1,0 +1,141 @@
+
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body{
+  background: linear-gradient(#f0f0f0,#f0f0f0);
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.slideshow {
+  margin-left: calc(-50vw + 50%);
+  position: relative;
+  width: 100vw;
+  margin-top: 58px;
+  overflow: hidden;
+  box-shadow: 5px 5px 20px rgba(163, 0, 0, 0.8);
+}
+
+.slideshow img {
+  width: 100vw;
+  height: 90vh;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel .thumbs-wrapper{
+  display: none;
+}
+
+
+h2{
+  font-size: 2rem;
+  margin-top: 2rem;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #000000;
+}
+
+.upload-image{
+  margin: 1rem auto;
+  width: 250px;
+  height: 250px;
+  background-color: #ffffff;
+  border: 3px dashed #000000;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ff6a00;
+  font-weight: bold;
+  transition: 0.3s ease;
+  
+}
+
+.upload-image:hover{
+  background-color: #fef4ec;
+  cursor: pointer;
+}
+
+label {
+  display:grid;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #ffcc99;
+}
+
+.brand-select, .model-input, label{
+  font-weight:bolder;
+  color: #000000;
+}
+
+.brand-select,.model-input{
+  background-color: #1f1f1f;
+  color: #fff;
+  border: 1px solid #111111e4;
+  padding: 0.7rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: 0.3s;
+  border: 2px solid #ff6a00;
+  width: 35%;
+  
+}
+
+.brand-select:focus, .model-input:focus{
+  outline: none;
+  box-shadow: 0 0 10px #ff6a00;
+  background-color: #292929;
+  
+}
+
+.verify-btn{
+  background-color: #ff6a00;
+  color:rgb(0, 0, 0);
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-color: #ff6a00;
+  margin-top:50px ;
+  
+}
+
+.verify-btn:hover{
+  color: rgb(0, 0, 0);
+  box-shadow: 0 0 30px 0px #ff6a00;
+  text-shadow:0 0 5px #ff6a00 ;
+  transform: scale(1.1);
+
+}
+
+
+.preview-gallery {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.preview-image {
+  width: 150px;
+  height: auto;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+
+
+
+
+

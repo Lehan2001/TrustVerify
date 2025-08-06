@@ -1,0 +1,31 @@
+body{
+    background-color: black;
+}
+
+h1{
+  margin-top: 8rem;
+  margin-bottom: 2rem;
+}
+
+p1{
+  font-size: large;
+  font-weight: bold;
+}
+
+.back-btn{
+  background-color: #ff6a00;
+  color:rgb(0, 0, 0);
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-color: #ff6a00;
+  margin-top:50px ;
+  
+}
+
+.back-btn:hover{
+  color: rgb(0, 0, 0);
+  box-shadow: 0 0 30px 0px #ff6a00;
+  text-shadow:0 0 5px #ff6a00 ;
+  transform: scale(1.1);
+
+}
