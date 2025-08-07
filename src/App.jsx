@@ -11,19 +11,54 @@ import { useNavigate } from 'react-router-dom';
 function App() {
 
   const navigate = useNavigate();
-  const handleVerifyClick = () => {
-  navigate('/result');
-  };
+
+  const handleVerifyClick = async () => {
+  if (uploadedImages.length === 0) {
+    alert("Please upload images first.");
+    return;
+  }
+
+  const formData = new FormData();
+  uploadedImages.forEach((imgObj, i) => {
+  const renamedFile = new File([imgObj.file], `upload_${i}.jpg`, { type: imgObj.file.type });
+  formData.append('images', renamedFile); // ✅ renamed files
+  });
+
+
+
+  try {
+    const response = await fetch("http://localhost:5000/predict", {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert(`Prediction: ${result.prediction} (${result.confidence.toFixed(2)}%)`);
+      navigate('/result', { state: result }); // optional: pass results to result page
+    } else {
+      alert("Prediction failed: " + result.error);
+    }
+
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Something went wrong. Backend might be down.");
+  }
+};
+
 
   const [uploadedImages, setUploadedImages] = useState([]);
 
   const handleImageUpload = (event) => {
   const files = Array.from(event.target.files);
+  const urls = files.map(file => ({
+    file,
+    preview: URL.createObjectURL(file)
+  }));
+  setUploadedImages(urls);
+};
 
-  const imageUrls = files.map(file => URL.createObjectURL(file));
-
-  setUploadedImages(imageUrls);
-  };
 
 
   return (
@@ -78,20 +113,21 @@ function App() {
         />
 
         {uploadedImages.length > 0 && (
-          <div className="preview-gallery">
-            <h3>Preview Uploaded Images:</h3>
-              <div className="preview-container">
-                {uploadedImages.map((src, index) => (
-                  <img
-                    key={index}
-                    src={src}
-                    alt={`upload-${index}`}
-                    className="preview-image"
-                  />
-              ))}
-            </div>
-          </div>
-        )}
+  <div className="preview-gallery">
+    <h3>Preview Uploaded Images:</h3>
+    <div className="preview-container">
+      {uploadedImages.map((img, index) => (
+        <img
+          key={index}
+          src={img.preview}
+          alt={`upload-${index}`}
+          className="preview-image"
+        />
+      ))}
+    </div>
+  </div>
+)}
+
 
         
       </div>
